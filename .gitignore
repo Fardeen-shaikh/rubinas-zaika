@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Tools (large binary)
+tools/yt-dlp.exe
+
+# Transcripts (downloaded on-demand)
+data/transcripts/*.vtt
+
+# Temp pipeline files
+data/new-videos.json
+data/processed-recipes.json
+
+# Environment
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# One-time migration/batch files (not needed for production)
+tools/batch-*.json
+tools/recipes-batch-*.js
+tools/missing-videos-data.json
+tools/slug-map.json

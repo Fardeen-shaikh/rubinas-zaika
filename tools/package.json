@@ -1,0 +1,27 @@
+{
+  "name": "rubinas-zaika",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "youtube-captions-scraper": "^2.0.3",
+    "youtube-transcript": "^1.2.1",
+    "youtubei.js": "^16.0.1"
+  },
+  "scripts": {
+    "fetch": "node fetch-channel-videos.js",
+    "process": "node process-new-video.js",
+    "update": "node update-recipe-data.js",
+    "pipeline": "node fetch-channel-videos.js && node process-new-video.js && node update-recipe-data.js",
+    "retry": "node retry-pending.js",
+    "generate": "node generate-pages.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

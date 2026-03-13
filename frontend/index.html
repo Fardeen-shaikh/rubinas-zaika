@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rubina's Zaika — Simple Homemade Indian Recipes | 93+ Recipes</title>
+  <meta name="description" content="Rubina's Zaika - Discover 93+ simple homemade Indian recipes: chicken biryani, mutton curry, snacks, sweets, chutneys and cooking tips. Watch step-by-step videos on YouTube.">
+  <meta name="keywords" content="indian recipes, homemade recipes, chicken biryani, mutton recipes, indian snacks, indian sweets, cooking tips, rubinas zaika, youtube recipes">
+  <link rel="canonical" href="https://rubinaszaika.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rubina's Zaika — Simple Homemade Indian Recipes">
+  <meta property="og:description" content="Discover 93+ simple homemade Indian recipes with step-by-step videos. Non-veg, snacks, sweets, main course and more.">
+  <meta property="og:image" content="https://i.ytimg.com/vi/HfxVv2gk3tA/maxresdefault.jpg">
+  <meta property="og:url" content="https://rubinaszaika.com/">
+  <meta property="og:site_name" content="Rubina's Zaika">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rubina's Zaika — Simple Homemade Indian Recipes">
+  <meta name="twitter:description" content="93+ simple homemade Indian recipes with step-by-step videos.">
+  <meta name="twitter:image" content="https://i.ytimg.com/vi/HfxVv2gk3tA/maxresdefault.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Rubina's Zaika",
+    "url": "https://rubinaszaika.com/",
+    "description": "Simple homemade Indian recipes with step-by-step YouTube videos",
+    "author": { "@type": "Person", "name": "Rubina's Zaika", "url": "https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "All Recipes",
+    "numberOfItems": 93,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "url": "https://rubinaszaika.com/recipes/albaik-style-chicken-wrap.html"},
+      {"@type": "ListItem", "position": 2, "url": "https://rubinaszaika.com/recipes/pumpkin-kheer.html"},
+      {"@type": "ListItem", "position": 3, "url": "https://rubinaszaika.com/recipes/easy-aloo-paratha.html"}
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Dark mode: prevent flash -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#5A822B', dark: '#476A22', light: '#e8f0de' },
+            spice: { DEFAULT: '#c8963e', dark: '#a67c2e', light: '#d4a574', pale: '#f0e6d3' },
+            heading: '#2d2013',
+            'body-text': '#5c4f3d',
+            'muted-text': '#9a8e7f',
+            'warm-bg': '#faf8f5',
+            'warm-border': '#e8e0d6',
+            'warm-dark': '#2d2013',
+          },
+          fontFamily: {
+            display: ['Andada Pro', 'Georgia', 'serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="font-body text-body-text bg-warm-bg relative">
+
+  <!-- Cursor dot for magnetic cards -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center justify-between h-14 lg:h-16">
+        <a href="#home" class="flex items-center gap-2 group">
+          <img src="images/logo.svg" alt="Rubina's Zaika" class="h-8 w-8">
+          <span class="font-display text-xl font-bold text-heading group-hover:text-spice transition-colors">Rubina's Zaika</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-5">
+          <a href="#home" class="nav-link text-[13px] font-medium text-body-text hover:text-heading transition-colors">Home</a>
+          <a href="#recipes" class="nav-link text-[13px] font-medium text-body-text hover:text-heading transition-colors">Recipes</a>
+          <a href="#contact" class="nav-link text-[13px] font-medium text-body-text hover:text-heading transition-colors">Contact</a>
+          <a href="#about" class="nav-link text-[13px] font-medium text-body-text hover:text-heading transition-colors">About</a>
+          <button id="dark-toggle" class="dark-toggle" aria-label="Toggle dark mode">
+            <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
+            class="bg-red-600 text-white px-4 py-1.5 rounded-md text-xs font-semibold hover:bg-red-700 transition-colors flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Subscribe
+          </a>
+        </div>
+
+        <button id="menu-toggle" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+          <span class="hamburger-line block w-5 h-0.5 bg-heading transition-all duration-300"></span>
+          <span class="hamburger-line block w-5 h-0.5 bg-heading transition-all duration-300"></span>
+          <span class="hamburger-line block w-5 h-0.5 bg-heading transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden hidden bg-warm-bg/95 backdrop-blur-md border-t border-warm-border">
+      <div class="px-5 py-4 space-y-1">
+        <a href="#home" class="mobile-nav-link block text-sm font-medium py-2 text-body-text hover:text-heading transition-colors">Home</a>
+        <a href="#recipes" class="mobile-nav-link block text-sm font-medium py-2 text-body-text hover:text-heading transition-colors">Recipes</a>
+        <a href="#contact" class="mobile-nav-link block text-sm font-medium py-2 text-body-text hover:text-heading transition-colors">Contact</a>
+        <a href="#about" class="mobile-nav-link block text-sm font-medium py-2 text-body-text hover:text-heading transition-colors">About</a>
+        <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
+          class="mobile-nav-link inline-flex items-center gap-2 mt-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Subscribe on YouTube
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO (Minimal) ========== -->
+  <section id="home" class="pt-20 pb-6 lg:pt-24 lg:pb-10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+      <!-- Two-column hero -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Left: headline + stats -->
+        <div>
+          <p class="hero-animate text-spice text-sm font-semibold tracking-wider">Assalamu Alaikum</p>
+          <h1 class="hero-animate hero-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl text-heading font-bold mt-3 leading-[1.1]">
+            What would you<br>like to cook today?
+          </h1>
+          <p class="hero-animate hero-delay-2 text-body-text text-base sm:text-lg mt-4 max-w-lg leading-relaxed">
+            Explore 93+ homemade Indian recipes with step-by-step video guides.
+          </p>
+
+          <!-- Hero CTAs -->
+          <div class="hero-animate hero-delay-3 flex flex-wrap items-center gap-3 mt-6">
+            <a href="#recipes" class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors">
+              Browse Recipes
+            </a>
+            <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors lg:hidden">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Subscribe
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Channel stats card -->
+        <div class="hero-animate hero-delay-2 hidden lg:flex lg:justify-end">
+          <div class="bg-white rounded-2xl border border-warm-border p-8 shadow-sm max-w-xs w-full">
+            <h3 class="font-display text-lg font-bold text-heading mb-6">Our Channel</h3>
+            <div class="space-y-4 mb-6">
+              <div class="flex items-baseline justify-between">
+                <span class="text-3xl font-bold text-heading" data-count="866" data-count-suffix="+">0</span>
+                <span class="text-sm text-muted-text">Subscribers</span>
+              </div>
+              <div class="border-t border-warm-border"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="text-3xl font-bold text-heading" data-count="147" data-count-suffix="">0</span>
+                <span class="text-sm text-muted-text">Videos</span>
+              </div>
+              <div class="border-t border-warm-border"></div>
+              <div class="flex items-baseline justify-between">
+                <span class="text-3xl font-bold text-heading" data-count="99" data-count-suffix="K+">0</span>
+                <span class="text-sm text-muted-text">Views</span>
+              </div>
+            </div>
+            <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
+              class="flex items-center justify-center gap-2 w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Subscribe
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category cards -->
+      <div class="hero-animate hero-delay-3 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3 mt-10">
+        <a href="category.html?cat=nonveg" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🍗</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Non-Veg</h3>
+            <p class="text-[10px] text-muted-text" id="cat-count-nonveg">recipes</p>
+          </div>
+        </a>
+        <a href="category.html?cat=veg" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🥬</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Veg</h3>
+            <p class="text-[10px] text-muted-text" id="cat-count-veg">recipes</p>
+          </div>
+        </a>
+        <a href="category.html?cat=sweets" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🍮</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Sweets</h3>
+            <p class="text-[10px] text-muted-text" id="cat-count-sweets">recipes</p>
+          </div>
+        </a>
+        <a href="category.html?cat=snacks" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🥘</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Snacks</h3>
+            <p class="text-[10px] text-muted-text" id="cat-count-snacks">recipes</p>
+          </div>
+        </a>
+        <a href="category.html?cat=maincourse" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🍛</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Main Course</h3>
+          </div>
+        </a>
+        <a href="category.html?cat=breakfast" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🥞</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Breakfast</h3>
+          </div>
+        </a>
+        <a href="category.html?cat=chutney" class="hero-category-btn bg-white rounded-2xl p-4 flex flex-col items-center gap-2 border border-warm-border hover:border-primary hover:shadow-md transition-all group">
+          <span class="text-2xl">🫙</span>
+          <div class="text-center">
+            <h3 class="font-bold text-xs text-heading group-hover:text-primary transition-colors">Chutney</h3>
+          </div>
+        </a>
+      </div>
+
+      <!-- Featured Recipes (auto-rotating, long videos only) -->
+      <div class="mt-12 pt-8 border-t border-warm-border">
+        <h2 class="font-display text-lg sm:text-xl font-bold text-heading mb-4">Featured Recipes</h2>
+        <div class="magnetic-grid grid grid-cols-2 lg:grid-cols-3 gap-3 mb-10" id="featured-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Why Cook With Us? -->
+      <div class="mt-12 pt-8 border-t border-warm-border" data-aos="fade-up">
+        <h2 class="font-display text-lg sm:text-xl font-bold text-heading mb-5">Why Cook With Us?</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white rounded-xl border border-warm-border p-5 text-center">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+            </div>
+            <h3 class="font-semibold text-sm text-heading">93+ Recipes</h3>
+            <p class="text-muted-text text-xs mt-1">Growing collection of homemade dishes</p>
+          </div>
+          <div class="bg-white rounded-xl border border-warm-border p-5 text-center">
+            <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg>
+            </div>
+            <h3 class="font-semibold text-sm text-heading">Video Guides</h3>
+            <p class="text-muted-text text-xs mt-1">Step-by-step YouTube tutorials</p>
+          </div>
+          <div class="bg-white rounded-xl border border-warm-border p-5 text-center">
+            <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-semibold text-sm text-heading">Easy to Follow</h3>
+            <p class="text-muted-text text-xs mt-1">Simple ingredients, clear instructions</p>
+          </div>
+          <div class="bg-white rounded-xl border border-warm-border p-5 text-center">
+            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center mx-auto mb-3">
+              <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+            </div>
+            <h3 class="font-semibold text-sm text-heading">All Skill Levels</h3>
+            <p class="text-muted-text text-xs mt-1">From beginners to home chefs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RECIPES ========== -->
+  <section id="recipes" class="py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+      <!-- All Recipes -->
+      <div class="mb-8" data-aos="fade-up">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-heading">All Recipes</h2>
+        <p class="text-muted-text text-sm mt-1">Handpicked from our kitchen to yours</p>
+      </div>
+
+      <!-- Search -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="relative flex-1 max-w-xs">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-text" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="recipe-search" placeholder="Search recipes..." aria-label="Search recipes"
+            class="w-full pl-9 pr-4 py-2.5 rounded-full border border-warm-border bg-white text-sm text-heading placeholder:text-muted-text focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all">
+        </div>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap gap-2 mb-8" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn active bg-primary text-white px-4 py-2 rounded-full text-xs font-semibold transition-all" data-filter="all">All</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="veg">Veg</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="nonveg">Non-Veg</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="snacks">Snacks</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="sweets">Sweets</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="maincourse">Main Course</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="breakfast">Breakfast</button>
+        <button class="filter-btn bg-white text-body-text px-4 py-2 rounded-full text-xs font-medium transition-all" data-filter="chutney">Chutney</button>
+      </div>
+
+      <!-- Grid -->
+      <div id="recipe-grid" class="magnetic-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+      <!-- Load More -->
+      <div class="text-center mt-10" id="load-more-wrap">
+        <button id="load-more-btn" class="border border-warm-border hover:border-primary hover:text-primary bg-white text-body-text px-8 py-3 rounded-full font-semibold text-sm transition-all">
+          Load More Recipes
+        </button>
+      </div>
+
+      <!-- Channel link -->
+      <div class="text-center mt-4">
+        <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-1.5 text-muted-text hover:text-heading font-medium text-sm transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          View all on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RECIPE MODAL ========== -->
+  <div id="recipe-modal" class="fixed inset-0 z-[100] hidden">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 sm:inset-4 lg:inset-8 xl:inset-y-6 xl:inset-x-[12%] bg-white sm:rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+      <!-- Header -->
+      <div class="flex items-center justify-between px-5 py-3 border-b border-warm-border bg-white sticky top-0 z-10">
+        <div class="flex items-center gap-3 min-w-0">
+          <button id="modal-close" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-warm-bg transition-colors flex-shrink-0">
+            <svg class="w-5 h-5 text-muted-text" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <h3 id="modal-title" class="font-display font-bold text-lg text-heading truncate"></h3>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="relative" id="lang-selector-wrap">
+            <button id="lang-selector-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-warm-border hover:border-primary/40 transition-colors text-xs font-medium text-body-text">
+              <svg class="w-3.5 h-3.5 text-muted-text" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              <span id="lang-current-name">English</span>
+              <svg class="w-3 h-3 text-muted-text" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="lang-dropdown" class="hidden absolute right-0 top-full mt-1 bg-white border border-warm-border rounded-lg shadow-xl py-1.5 min-w-[160px] max-h-[280px] overflow-y-auto z-50"></div>
+          </div>
+          <a id="modal-yt-link-top" href="#" target="_blank" rel="noopener"
+            class="hidden sm:inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Watch Video
+          </a>
+        </div>
+      </div>
+      <!-- Body -->
+      <div class="flex-1 overflow-y-auto" id="modal-body">
+        <div id="modal-hero" class="relative w-full overflow-hidden bg-warm-bg" style="aspect-ratio:21/9;"></div>
+        <div class="max-w-3xl mx-auto px-5 sm:px-8 py-8">
+          <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span id="modal-category" class="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md"></span>
+            <span class="flex items-center gap-1 text-xs text-muted-text"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg><span id="modal-views"></span></span>
+            <span class="flex items-center gap-1 text-xs text-muted-text"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span id="modal-duration"></span></span>
+            <span id="modal-difficulty" class="text-xs text-muted-text"></span>
+          </div>
+          <!-- Share Buttons -->
+          <div class="flex flex-wrap gap-2 mb-6" id="modal-share-row">
+            <button class="share-btn" id="share-copy" onclick="shareRecipe('copy')">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Copy Link
+            </button>
+            <button class="share-btn whatsapp" onclick="shareRecipe('whatsapp')">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </button>
+            <button class="share-btn" id="share-native" onclick="shareRecipe('native')" style="display:none">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              Share
+            </button>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mb-8">
+            <div class="bg-warm-bg rounded-xl p-3 text-center">
+              <div id="modal-prep-label" class="text-muted-text text-[10px] font-semibold uppercase tracking-wider mb-0.5">Prep</div>
+              <div id="modal-prep" class="font-semibold text-heading text-sm"></div>
+            </div>
+            <div class="bg-warm-bg rounded-xl p-3 text-center">
+              <div id="modal-cook-label" class="text-muted-text text-[10px] font-semibold uppercase tracking-wider mb-0.5">Cook</div>
+              <div id="modal-cook" class="font-semibold text-heading text-sm"></div>
+            </div>
+            <div class="bg-warm-bg rounded-xl p-3 text-center">
+              <div id="modal-servings-label" class="text-muted-text text-[10px] font-semibold uppercase tracking-wider mb-0.5">Servings</div>
+              <div id="modal-servings" class="font-semibold text-heading text-sm"></div>
+            </div>
+          </div>
+          <div class="mb-8"><p id="modal-description-text" class="text-body-text leading-relaxed"></p></div>
+          <div class="mb-8 bg-warm-bg rounded-2xl p-6">
+            <h4 class="font-semibold text-lg text-heading mb-4 flex items-center gap-2">
+              <span class="w-6 h-6 bg-primary/10 rounded flex items-center justify-center"><svg class="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></span>
+              <span id="modal-ingredients-heading">Ingredients</span>
+            </h4>
+            <ul id="modal-ingredients-list" class="space-y-2"></ul>
+          </div>
+          <div class="mb-8">
+            <h4 class="font-semibold text-lg text-heading mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 bg-primary/10 rounded flex items-center justify-center"><svg class="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+              <span id="modal-method-heading">Step-by-Step Method</span>
+            </h4>
+            <ol id="modal-method-list" class="space-y-4"></ol>
+          </div>
+          <div id="modal-tips-section" class="mb-8 bg-spice-pale border border-spice-light/30 rounded-2xl p-6 hidden">
+            <h4 class="font-semibold text-base text-heading mb-3 flex items-center gap-2">
+              <span class="w-6 h-6 bg-spice/10 rounded flex items-center justify-center"><svg class="w-3.5 h-3.5 text-spice" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></span>
+              <span id="modal-tips-heading">Tips</span>
+            </h4>
+            <ul id="modal-tips-list" class="space-y-2"></ul>
+          </div>
+          <div id="modal-outro-section" class="mb-8 text-center py-6 border-t border-b border-warm-border">
+            <p id="modal-outro-text" class="text-muted-text italic leading-relaxed text-lg"></p>
+          </div>
+          <div class="text-center pb-4">
+            <a id="modal-yt-link" href="#" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span id="modal-yt-cta-text">Watch Full Recipe on YouTube</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CTA ========== -->
+  <section class="py-16 bg-warm-dark">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-white" data-aos="fade-up">
+        Never Miss a Recipe
+      </h2>
+      <p class="text-white/50 text-sm mt-2 mb-6" data-aos="fade-up" data-aos-delay="50">
+        Join our growing community. New recipes every week on YouTube.
+      </p>
+      <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors"
+        data-aos="fade-up" data-aos-delay="100">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Subscribe on YouTube
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div data-aos="fade-right">
+          <p class="text-spice text-xs font-semibold tracking-widest uppercase mb-3">Contact</p>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-heading leading-tight mb-4">
+            Let's Connect
+          </h2>
+          <p class="text-body-text text-sm leading-relaxed mb-6">
+            Have a recipe request, collaboration idea, or just want to say hello? I'd love to hear from you. Recipe requests may be featured in upcoming videos!
+          </p>
+          <div class="flex items-center gap-2">
+            <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg" target="_blank" rel="noopener"
+              class="social-icon w-10 h-10 bg-warm-bg rounded-lg flex items-center justify-center text-muted-text hover:bg-red-600 hover:text-white transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/rubinaszaika/" target="_blank" rel="noopener"
+              class="social-icon w-10 h-10 bg-warm-bg rounded-lg flex items-center justify-center text-muted-text hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:text-white transition-all">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div data-aos="fade-left" data-aos-delay="150">
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-white rounded-2xl border border-warm-border p-6">
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="block text-xs font-medium text-body-text mb-1.5">Your Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-3.5 py-2.5 rounded-lg border border-warm-border bg-warm-bg text-sm text-heading focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all" placeholder="Enter your name">
+              </div>
+              <div>
+                <label for="email" class="block text-xs font-medium text-body-text mb-1.5">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-3.5 py-2.5 rounded-lg border border-warm-border bg-warm-bg text-sm text-heading focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all" placeholder="Enter your email">
+              </div>
+              <div>
+                <label for="message" class="block text-xs font-medium text-body-text mb-1.5">Message</label>
+                <textarea id="message" name="message" rows="4" required class="w-full px-3.5 py-2.5 rounded-lg border border-warm-border bg-warm-bg text-sm text-heading focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all resize-none" placeholder="Write your message..."></textarea>
+              </div>
+              <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-2.5 rounded-lg font-semibold text-sm transition-all">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="about" class="bg-warm-dark text-[#a89880] pt-14 pb-8">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <!-- Top grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 mb-8 border-b border-white/10">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <img src="images/logo.svg" alt="" class="h-8 w-8">
+            <span class="font-display text-xl font-bold text-white">Rubina's Zaika</span>
+          </div>
+          <p class="text-sm leading-relaxed">
+            Where the love for food meets the warmth of home cooking. Sharing simple homemade recipes from our family kitchen.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-semibold text-white text-sm mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="#recipes" class="hover:text-white transition-colors">Recipes</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg" target="_blank" rel="noopener" class="hover:text-white transition-colors">YouTube Channel</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div>
+          <h4 class="font-semibold text-white text-sm mb-4">Categories</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="category.html?cat=nonveg" class="hover:text-white transition-colors">Non-Veg</a></li>
+            <li><a href="category.html?cat=snacks" class="hover:text-white transition-colors">Snacks</a></li>
+            <li><a href="category.html?cat=maincourse" class="hover:text-white transition-colors">Main Course</a></li>
+            <li><a href="category.html?cat=sweets" class="hover:text-white transition-colors">Sweets</a></li>
+            <li><a href="category.html?cat=breakfast" class="hover:text-white transition-colors">Breakfast</a></li>
+            <li><a href="category.html?cat=chutney" class="hover:text-white transition-colors">Chutney</a></li>
+          </ul>
+        </div>
+
+        <!-- Channel Stats -->
+        <div>
+          <h4 class="font-semibold text-white text-sm mb-4">Our Channel</h4>
+          <div class="space-y-3 mb-5">
+            <div class="flex items-baseline gap-2">
+              <span class="text-xl font-bold text-white" data-count="866" data-count-suffix="+">0</span>
+              <span class="text-xs">Subscribers</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-xl font-bold text-white" data-count="147" data-count-suffix="">0</span>
+              <span class="text-xs">Videos</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-xl font-bold text-white" data-count="99" data-count-suffix="K+">0</span>
+              <span class="text-xs">Views</span>
+            </div>
+          </div>
+          <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Subscribe
+          </a>
+        </div>
+      </div>
+
+      <!-- Social + Follow -->
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-sm">Follow us</span>
+        <div class="flex gap-2">
+          <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg" target="_blank" rel="noopener" class="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/rubinaszaika/" target="_blank" rel="noopener" class="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-[#6b5e50] text-xs">&copy; 2026 Rubina's Zaika. All rights reserved.</p>
+        <p class="text-[#6b5e50] text-xs">Made with love for food lovers everywhere</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/recipe-data.js"></script>
+  <script src="js/slug-map.js"></script>
+  <script src="js/lang/hi.js"></script>
+  <script src="js/lang/ur.js"></script>
+  <script src="js/lang/mr.js"></script>
+  <script src="js/lang-switcher.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

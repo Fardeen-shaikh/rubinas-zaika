@@ -1,0 +1,93 @@
+name: Auto-Update Recipes from YouTube
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    # Manual trigger button in GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  update-recipes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install yt-dlp
+        run: |
+          sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+          sudo chmod a+rx /usr/local/bin/yt-dlp
+
+      - name: Install dependencies
+        working-directory: tools
+        run: npm install
+
+      - name: Fetch new videos from YouTube
+        working-directory: tools
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node fetch-channel-videos.js
+
+      - name: Check for new videos
+        id: check-new
+        run: |
+          if [ -f "data/new-videos.json" ] && [ "$(cat data/new-videos.json)" != "[]" ]; then
+            echo "has_new=true" >> $GITHUB_OUTPUT
+            echo "New videos found!"
+          else
+            echo "has_new=false" >> $GITHUB_OUTPUT
+            echo "No new videos."
+          fi
+
+      - name: Process new videos with Claude AI
+        if: steps.check-new.outputs.has_new == 'true'
+        working-directory: tools
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node process-new-video.js
+
+      - name: Check for processed recipes
+        if: steps.check-new.outputs.has_new == 'true'
+        id: check-processed
+        run: |
+          if [ -f "data/processed-recipes.json" ] && [ "$(cat data/processed-recipes.json)" != "[]" ]; then
+            echo "has_recipes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_recipes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update recipe data and regenerate pages
+        if: steps.check-processed.outputs.has_recipes == 'true'
+        working-directory: tools
+        run: node update-recipe-data.js
+
+      - name: Retry pending videos (transcripts may be ready now)
+        working-directory: tools
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node retry-pending.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            RECIPE_COUNT=$(git diff --staged --name-only | grep -c "frontend/recipes/" || true)
+            git commit -m "Auto-update: Added ${RECIPE_COUNT} new recipe(s) from YouTube
+
+            Automated by GitHub Actions — new videos detected on Rubina's Zaika channel."
+            git push
+          fi
