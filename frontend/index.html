@@ -509,7 +509,7 @@
         </div>
 
         <div data-aos="fade-left" data-aos-delay="150">
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-white rounded-2xl border border-warm-border p-6">
+          <form id="contact-form" class="bg-white rounded-2xl border border-warm-border p-6">
             <div class="space-y-4">
               <div>
                 <label for="name" class="block text-xs font-medium text-body-text mb-1.5">Your Name</label>
@@ -528,6 +528,18 @@
               </button>
             </div>
           </form>
+          <script>
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+              e.preventDefault();
+              var name = document.getElementById('name').value;
+              var email = document.getElementById('email').value;
+              var msg = document.getElementById('message').value;
+              var subject = encodeURIComponent('Message from ' + name + ' via Rubina\'s Zaika');
+              var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+              window.location.href = 'mailto:fardeenshaikh49@gmail.com?subject=' + subject + '&body=' + body;
+              this.reset();
+            });
+          </script>
         </div>
       </div>
     </div>
