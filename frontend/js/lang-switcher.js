@@ -45,6 +45,34 @@ const uiDefaults = {
   readRecipe: 'Read full recipe',
   loadMore: 'Load More',
   watchOnYoutube: 'Watch Full Recipe on YouTube',
+  greeting: 'Assalamu Alaikum',
+  heroTitle: 'What would you\nlike to cook today?',
+  heroSubtitle: 'Explore 93+ homemade Indian recipes with step-by-step video guides.',
+  browseRecipes: 'Browse Recipes',
+  featuredRecipes: 'Featured Recipes',
+  whyCookWithUs: 'Why Cook With Us?',
+  recipesCount: '93+ Recipes',
+  recipesCountDesc: 'Growing collection of homemade dishes',
+  videoGuides: 'Video Guides',
+  videoGuidesDesc: 'Step-by-step YouTube tutorials',
+  easyToFollow: 'Easy to Follow',
+  easyToFollowDesc: 'Simple ingredients, clear instructions',
+  allSkillLevels: 'All Skill Levels',
+  allSkillLevelsDesc: 'From beginners to home chefs',
+  allRecipes: 'All Recipes',
+  ourChannel: 'Our Channel',
+  subscribers: 'Subscribers',
+  videos: 'Videos',
+  views: 'Views',
+  nonveg: 'Non-Veg',
+  veg: 'Veg',
+  snacks: 'Snacks',
+  sweets: 'Sweets',
+  maincourse: 'Main Course',
+  breakfast: 'Breakfast',
+  chutney: 'Chutney',
+  searchPlaceholder: 'Search recipes...',
+  subscribe: 'Subscribe',
 };
 
 // Get UI string for current language
@@ -111,6 +139,9 @@ function setLanguage(code) {
   renderLangOptions();
   renderNavLangOptions();
   renderMobileLangOptions();
+
+  // Apply homepage translation
+  applyHomepageTranslation();
 
   // If modal is open with a recipe, re-render it
   if (window._currentModalRecipe && !document.getElementById('recipe-modal').classList.contains('hidden')) {
@@ -259,7 +290,105 @@ function initMobileLangDropdown() {
   });
 }
 
+// ========== Homepage translation ==========
+const hpDefaults = {};
+function storeHpOriginal(id) {
+  const el = document.getElementById(id);
+  if (el) hpDefaults[id] = el.innerHTML;
+}
+
+// Store originals on first load
+[
+  'hp-greeting', 'hp-hero-title', 'hp-hero-subtitle', 'hp-browse-btn',
+  'hp-our-channel', 'hp-subscribers-label', 'hp-videos-label', 'hp-views-label',
+  'hp-cat-nonveg', 'hp-cat-veg', 'hp-cat-sweets', 'hp-cat-snacks',
+  'hp-cat-maincourse', 'hp-cat-breakfast', 'hp-cat-chutney',
+  'hp-featured-heading', 'hp-whycook-heading',
+  'hp-feat-recipes', 'hp-feat-recipes-desc', 'hp-feat-video', 'hp-feat-video-desc',
+  'hp-feat-easy', 'hp-feat-easy-desc', 'hp-feat-all', 'hp-feat-all-desc',
+  'hp-all-recipes-heading'
+].forEach(storeHpOriginal);
+
+function applyHomepageTranslation() {
+  const t = (id, key) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const translated = getUI(key);
+    // If getUI returns the key itself (no translation), fall back to original
+    if (translated === key) {
+      if (hpDefaults[id]) el.innerHTML = hpDefaults[id];
+    } else {
+      el.textContent = translated;
+    }
+  };
+
+  t('hp-greeting', 'greeting');
+  t('hp-hero-subtitle', 'heroSubtitle');
+  t('hp-browse-btn', 'browseRecipes');
+  t('hp-our-channel', 'ourChannel');
+  t('hp-subscribers-label', 'subscribers');
+  t('hp-videos-label', 'videos');
+  t('hp-views-label', 'views');
+  t('hp-featured-heading', 'featuredRecipes');
+  t('hp-whycook-heading', 'whyCookWithUs');
+  t('hp-feat-recipes', 'recipesCount');
+  t('hp-feat-recipes-desc', 'recipesCountDesc');
+  t('hp-feat-video', 'videoGuides');
+  t('hp-feat-video-desc', 'videoGuidesDesc');
+  t('hp-feat-easy', 'easyToFollow');
+  t('hp-feat-easy-desc', 'easyToFollowDesc');
+  t('hp-feat-all', 'allSkillLevels');
+  t('hp-feat-all-desc', 'allSkillLevelsDesc');
+  t('hp-all-recipes-heading', 'allRecipes');
+
+  // Category names
+  t('hp-cat-nonveg', 'nonveg');
+  t('hp-cat-veg', 'veg');
+  t('hp-cat-sweets', 'sweets');
+  t('hp-cat-snacks', 'snacks');
+  t('hp-cat-maincourse', 'maincourse');
+  t('hp-cat-breakfast', 'breakfast');
+  t('hp-cat-chutney', 'chutney');
+
+  // Hero title needs innerHTML for <br>
+  const titleEl = document.getElementById('hp-hero-title');
+  if (titleEl) {
+    const titleText = getUI('heroTitle');
+    if (titleText !== 'heroTitle') {
+      titleEl.innerHTML = titleText.replace(/\n/g, '<br>');
+    } else if (hpDefaults['hp-hero-title']) {
+      titleEl.innerHTML = hpDefaults['hp-hero-title'];
+    }
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    const filter = btn.dataset.filter;
+    if (!filter) return;
+    const map = { all: 'All', veg: 'veg', nonveg: 'nonveg', snacks: 'snacks', sweets: 'sweets', maincourse: 'maincourse', breakfast: 'breakfast', chutney: 'chutney' };
+    if (filter === 'all') {
+      btn.textContent = currentLang === 'en' ? 'All' : (getUI('all') !== 'all' ? getUI('all') : 'All');
+    } else if (map[filter]) {
+      const translated = getUI(filter);
+      btn.textContent = translated !== filter ? translated : (filter === 'maincourse' ? 'Main Course' : filter.charAt(0).toUpperCase() + filter.slice(1));
+    }
+  });
+
+  // Search placeholder
+  const searchInput = document.getElementById('recipe-search');
+  if (searchInput) {
+    const placeholder = getUI('searchPlaceholder');
+    if (placeholder !== 'searchPlaceholder') searchInput.placeholder = placeholder;
+    else searchInput.placeholder = 'Search recipes...';
+  }
+}
+
 // Initialize on load
 initLangDropdown();
 initNavLangDropdown();
 initMobileLangDropdown();
+
+// Apply homepage translation on load if not English
+if (currentLang !== 'en') {
+  applyHomepageTranslation();
+}
