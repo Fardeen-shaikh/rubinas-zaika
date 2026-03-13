@@ -55,6 +55,18 @@ const lang_hi = {
     brandDesc: "जहां खाने का प्यार और घर की रसोई की गर्माहट मिलती है। हमारी पारिवारिक रसोई से सरल घरेलू रेसिपी।",
     followUs: "हमें फॉलो करें",
     allRecipesSubtitle: "हमारी रसोई से आपकी रसोई तक",
+    neverMissRecipe: "कोई रेसिपी न छूटे",
+    ctaSubtitle: "हमारी बढ़ती कम्युनिटी से जुड़ें। हर हफ्ते YouTube पर नई रेसिपी।",
+    subscribeOnYoutube: "YouTube पर सब्सक्राइब करें",
+    letsConnect: "संपर्क करें",
+    contactDesc: "कोई रेसिपी रिक्वेस्ट, कोलैबोरेशन आइडिया, या बस हैलो कहना चाहते हैं? मुझे आपसे सुनकर खुशी होगी। रेसिपी रिक्वेस्ट आने वाले वीडियो में शामिल हो सकती हैं!",
+    yourName: "आपका नाम",
+    namePlaceholder: "अपना नाम लिखें",
+    email: "ईमेल",
+    emailPlaceholder: "अपना ईमेल लिखें",
+    message: "संदेश",
+    messagePlaceholder: "अपना संदेश लिखें...",
+    sendMessage: "संदेश भेजें",
   },
   recipes: {
     "HfxVv2gk3tA": {

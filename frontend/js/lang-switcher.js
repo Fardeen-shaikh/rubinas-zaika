@@ -81,6 +81,18 @@ const uiDefaults = {
   brandDesc: 'Where the love for food meets the warmth of home cooking. Sharing simple homemade recipes from our family kitchen.',
   followUs: 'Follow us',
   allRecipesSubtitle: 'Handpicked from our kitchen to yours',
+  neverMissRecipe: 'Never Miss a Recipe',
+  ctaSubtitle: 'Join our growing community. New recipes every week on YouTube.',
+  subscribeOnYoutube: 'Subscribe on YouTube',
+  letsConnect: "Let's Connect",
+  contactDesc: "Have a recipe request, collaboration idea, or just want to say hello? I'd love to hear from you. Recipe requests may be featured in upcoming videos!",
+  yourName: 'Your Name',
+  namePlaceholder: 'Enter your name',
+  email: 'Email',
+  emailPlaceholder: 'Enter your email',
+  message: 'Message',
+  messagePlaceholder: 'Write your message...',
+  sendMessage: 'Send Message',
 };
 
 // Get UI string for current language
@@ -323,7 +335,10 @@ function storeHpOriginal(id) {
   'ft-categories', 'ft-cat-nonveg', 'ft-cat-snacks', 'ft-cat-maincourse',
   'ft-cat-sweets', 'ft-cat-breakfast', 'ft-cat-chutney',
   'ft-our-channel', 'ft-subscribers', 'ft-videos', 'ft-views', 'ft-subscribe-text',
-  'hp-all-recipes-subtitle'
+  'hp-all-recipes-subtitle', 'ft-follow-us', 'hp-hero-subscribe',
+  'cta-heading', 'cta-subtitle', 'cta-subscribe-text',
+  'contact-label', 'contact-heading', 'contact-desc',
+  'form-name-label', 'form-email-label', 'form-message-label', 'form-submit-btn'
 ].forEach(storeHpOriginal);
 
 function applyHomepageTranslation() {
@@ -418,6 +433,30 @@ function applyHomepageTranslation() {
   t('ft-videos', 'videos');
   t('ft-views', 'views');
   t('ft-subscribe-text', 'subscribe');
+  t('ft-follow-us', 'followUs');
+  t('hp-hero-subscribe', 'subscribe');
+
+  // CTA banner
+  t('cta-heading', 'neverMissRecipe');
+  t('cta-subtitle', 'ctaSubtitle');
+  t('cta-subscribe-text', 'subscribeOnYoutube');
+
+  // Contact section
+  t('contact-label', 'contact');
+  t('contact-heading', 'letsConnect');
+  t('contact-desc', 'contactDesc');
+  t('form-name-label', 'yourName');
+  t('form-email-label', 'email');
+  t('form-message-label', 'message');
+  t('form-submit-btn', 'sendMessage');
+
+  // Form placeholders
+  const nameInput = document.getElementById('name');
+  if (nameInput) nameInput.placeholder = getUI('namePlaceholder');
+  const emailInput = document.getElementById('email');
+  if (emailInput) emailInput.placeholder = getUI('emailPlaceholder');
+  const msgInput = document.getElementById('message');
+  if (msgInput) msgInput.placeholder = getUI('messagePlaceholder');
 }
 
 // Initialize on load

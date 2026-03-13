@@ -225,7 +225,7 @@
             <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
               class="flex items-center justify-center gap-2 w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              Subscribe
+              <span id="hp-hero-subscribe">Subscribe</span>
             </a>
           </div>
         </div>
@@ -485,17 +485,17 @@
   <!-- ========== CTA ========== -->
   <section class="py-16 bg-warm-dark">
     <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-      <h2 class="font-display text-2xl sm:text-3xl font-bold text-white" data-aos="fade-up">
+      <h2 id="cta-heading" class="font-display text-2xl sm:text-3xl font-bold text-white" data-aos="fade-up">
         Never Miss a Recipe
       </h2>
-      <p class="text-white/50 text-sm mt-2 mb-6" data-aos="fade-up" data-aos-delay="50">
+      <p id="cta-subtitle" class="text-white/50 text-sm mt-2 mb-6" data-aos="fade-up" data-aos-delay="50">
         Join our growing community. New recipes every week on YouTube.
       </p>
       <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg?sub_confirmation=1" target="_blank" rel="noopener"
         class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors"
         data-aos="fade-up" data-aos-delay="100">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Subscribe on YouTube
+        <span id="cta-subscribe-text">Subscribe on YouTube</span>
       </a>
     </div>
   </section>
@@ -505,11 +505,11 @@
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
         <div data-aos="fade-right">
-          <p class="text-spice text-xs font-semibold tracking-widest uppercase mb-3">Contact</p>
-          <h2 class="font-display text-2xl sm:text-3xl font-bold text-heading leading-tight mb-4">
+          <p id="contact-label" class="text-spice text-xs font-semibold tracking-widest uppercase mb-3">Contact</p>
+          <h2 id="contact-heading" class="font-display text-2xl sm:text-3xl font-bold text-heading leading-tight mb-4">
             Let's Connect
           </h2>
-          <p class="text-body-text text-sm leading-relaxed mb-6">
+          <p id="contact-desc" class="text-body-text text-sm leading-relaxed mb-6">
             Have a recipe request, collaboration idea, or just want to say hello? I'd love to hear from you. Recipe requests may be featured in upcoming videos!
           </p>
           <div class="flex items-center gap-2">
@@ -528,18 +528,18 @@
           <form id="contact-form" class="bg-white rounded-2xl border border-warm-border p-6">
             <div class="space-y-4">
               <div>
-                <label for="name" class="block text-xs font-medium text-body-text mb-1.5">Your Name</label>
+                <label id="form-name-label" for="name" class="block text-xs font-medium text-body-text mb-1.5">Your Name</label>
                 <input type="text" id="name" name="name" required class="w-full px-3.5 py-2.5 rounded-lg border border-warm-border bg-warm-bg text-sm text-heading focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all" placeholder="Enter your name">
               </div>
               <div>
-                <label for="email" class="block text-xs font-medium text-body-text mb-1.5">Email</label>
+                <label id="form-email-label" for="email" class="block text-xs font-medium text-body-text mb-1.5">Email</label>
                 <input type="email" id="email" name="email" required class="w-full px-3.5 py-2.5 rounded-lg border border-warm-border bg-warm-bg text-sm text-heading focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all" placeholder="Enter your email">
               </div>
               <div>
-                <label for="message" class="block text-xs font-medium text-body-text mb-1.5">Message</label>
+                <label id="form-message-label" for="message" class="block text-xs font-medium text-body-text mb-1.5">Message</label>
                 <textarea id="message" name="message" rows="4" required class="w-full px-3.5 py-2.5 rounded-lg border border-warm-border bg-warm-bg text-sm text-heading focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all resize-none" placeholder="Write your message..."></textarea>
               </div>
-              <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-2.5 rounded-lg font-semibold text-sm transition-all">
+              <button id="form-submit-btn" type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-2.5 rounded-lg font-semibold text-sm transition-all">
                 Send Message
               </button>
             </div>
@@ -628,7 +628,7 @@
 
       <!-- Social + Follow -->
       <div class="flex items-center justify-between mb-8">
-        <span class="text-sm">Follow us</span>
+        <span id="ft-follow-us" class="text-sm">Follow us</span>
         <div class="flex gap-2">
           <a href="https://www.youtube.com/channel/UCRaHm_R2lWXCuYroSKLkfBg" target="_blank" rel="noopener" class="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors">
             <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>

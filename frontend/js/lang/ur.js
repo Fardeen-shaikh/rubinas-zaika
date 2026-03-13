@@ -55,6 +55,18 @@ const lang_ur = {
     brandDesc: "جہاں کھانے کی محبت اور گھر کے کھانے کی گرمجوشی ملتی ہے۔ ہمارے خاندانی باورچی خانے سے سادہ گھریلو ترکیبیں۔",
     followUs: "ہمیں فالو کریں",
     allRecipesSubtitle: "ہمارے باورچی خانے سے آپ کے باورچی خانے تک",
+    neverMissRecipe: "کوئی ترکیب نہ چھوٹے",
+    ctaSubtitle: "ہماری بڑھتی کمیونٹی سے جڑیں۔ ہر ہفتے YouTube پر نئی ترکیب۔",
+    subscribeOnYoutube: "YouTube پر سبسکرائب کریں",
+    letsConnect: "رابطہ کریں",
+    contactDesc: "کوئی ترکیب کی درخواست، تعاون کا خیال، یا بس ہیلو کہنا چاہتے ہیں؟ مجھے آپ سے سن کر خوشی ہوگی۔ ترکیب کی درخواستیں آنے والے ویڈیوز میں شامل ہو سکتی ہیں!",
+    yourName: "آپ کا نام",
+    namePlaceholder: "اپنا نام لکھیں",
+    email: "ای میل",
+    emailPlaceholder: "اپنا ای میل لکھیں",
+    message: "پیغام",
+    messagePlaceholder: "اپنا پیغام لکھیں...",
+    sendMessage: "پیغام بھیجیں",
   },
   recipes: {
     "HfxVv2gk3tA": {
