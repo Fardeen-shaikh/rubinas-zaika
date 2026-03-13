@@ -159,39 +159,13 @@
     renderDropdown();
   }
 
-  // Inject language dropdown into the nav
-  var nav = document.querySelector('nav .max-w-3xl');
-  if (!nav) return;
+  // Language button and dropdown are now hardcoded in the HTML template
+  var langBtn = document.getElementById('rp-lang-btn');
+  if (!langBtn) return;
 
-  // Inject a <style> for the pulse animation
-  var style = document.createElement('style');
-  style.textContent =
-    '@keyframes rp-lang-pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,119,6,0.5)}50%{box-shadow:0 0 0 6px rgba(217,119,6,0)}}' +
-    '.rp-lang-pulse{animation:rp-lang-pulse 1.5s ease-in-out 3}';
-  document.head.appendChild(style);
-
-  var langWrap = document.createElement('div');
-  langWrap.style.cssText = 'position:relative;';
-  langWrap.innerHTML =
-    '<button id="rp-lang-btn" class="rp-lang-pulse" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;background:#fffbeb;color:#b45309;padding:6px 12px;border-radius:9999px;border:1px solid #fde68a;cursor:pointer;transition:background 0.2s;">' +
-      '<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path stroke-linecap="round" stroke-linejoin="round" d="M3.6 9h16.8M3.6 15h16.8"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg>' +
-      '<span id="rp-lang-name">English</span>' +
-      '<svg style="width:12px;height:12px;opacity:0.6;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>' +
-    '</button>' +
-    '<div id="rp-lang-dropdown" style="display:none;position:absolute;right:0;top:100%;margin-top:4px;background:#fff;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,0.12);border:1px solid #f5f5f4;padding:4px 0;min-width:140px;z-index:9999;max-height:240px;overflow-y:auto;"></div>';
-
-  // Add hover effect to button
-  var langBtn = langWrap.querySelector('#rp-lang-btn');
+  // Add hover effect
   langBtn.addEventListener('mouseover', function() { langBtn.style.background = '#fef3c7'; });
   langBtn.addEventListener('mouseout', function() { langBtn.style.background = '#fffbeb'; });
-
-  // Insert before the YouTube button
-  var ytBtn = nav.querySelector('a[href*="youtube.com"]');
-  if (ytBtn) {
-    nav.insertBefore(langWrap, ytBtn);
-  } else {
-    nav.appendChild(langWrap);
-  }
 
   function renderDropdown() {
     var dropdown = document.getElementById('rp-lang-dropdown');
