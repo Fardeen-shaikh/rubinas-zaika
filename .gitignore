@@ -11,6 +11,9 @@ data/transcripts/*.vtt
 data/new-videos.json
 data/processed-recipes.json
 
+# Netlify
+.netlify/
+
 # Environment
 .env
 
