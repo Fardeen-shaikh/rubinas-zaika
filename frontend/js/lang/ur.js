@@ -47,6 +47,14 @@ const lang_ur = {
     videos: "ویڈیوز",
     veg: "ویج",
     subscribe: "سبسکرائب کریں",
+    quickLinks: "فوری لنکس",
+    categories: "زمرے",
+    home: "ہوم",
+    recipes: "ترکیبیں",
+    contact: "رابطہ",
+    brandDesc: "جہاں کھانے کی محبت اور گھر کے کھانے کی گرمجوشی ملتی ہے۔ ہمارے خاندانی باورچی خانے سے سادہ گھریلو ترکیبیں۔",
+    followUs: "ہمیں فالو کریں",
+    allRecipesSubtitle: "ہمارے باورچی خانے سے آپ کے باورچی خانے تک",
   },
   recipes: {
     "HfxVv2gk3tA": {

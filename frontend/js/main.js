@@ -154,10 +154,10 @@ function renderCards() {
   recipeGrid.innerHTML = '';
 
   if (filtered.length === 0) {
+    const noResultsText = (typeof getUI === 'function') ? getUI('noResults') : 'No recipes found';
     recipeGrid.innerHTML = `
       <div class="col-span-full text-center py-16 text-muted-text">
-        <p class="text-base font-semibold mb-1">No recipes found</p>
-        <p class="text-sm">Try a different search or category.</p>
+        <p class="text-base font-semibold mb-1">${noResultsText}</p>
       </div>`;
     loadMoreWrap.classList.add('hidden');
     return;
@@ -165,8 +165,9 @@ function renderCards() {
 
   toShow.forEach((recipe, i) => {
     const cat = categoryColors[recipe.category] || categoryColors.snacks;
-    const title = (typeof getRecipeField === 'function') ? getRecipeField(recipe, 'title', 'card') : recipe.title;
-    const desc = (typeof getRecipeField === 'function') ? getRecipeField(recipe, 'description', 'card') : recipe.description;
+    const title = (typeof getRecipeField === 'function') ? getRecipeField(recipe, 'title', 'modal') : recipe.title;
+    const desc = (typeof getRecipeField === 'function') ? getRecipeField(recipe, 'description', 'modal') : recipe.description;
+    const catLabel = (typeof getUI === 'function') ? getUI(recipe.category) || cat.label : cat.label;
 
     const card = document.createElement('div');
     card.className = 'recipe-card-item group rounded-xl overflow-hidden cursor-pointer';
@@ -177,7 +178,7 @@ function renderCards() {
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy"
           onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${recipe.id}/hqdefault.jpg';this.style.transform='scale(1.2)'">
         <div class="absolute top-2 left-2">
-          <span class="${cat.bg} text-[10px] font-semibold px-2 py-0.5 rounded">${cat.label}</span>
+          <span class="${cat.bg} text-[10px] font-semibold px-2 py-0.5 rounded">${catLabel}</span>
         </div>
         <div class="absolute top-2 right-2 bg-black/50 text-white text-[10px] font-medium px-1.5 py-0.5 rounded">
           ${recipe.duration}
@@ -188,13 +189,13 @@ function renderCards() {
         <p class="text-muted-text text-xs leading-relaxed mb-2.5 line-clamp-2">${desc}</p>
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2 text-[11px] text-muted-text">
-            <span>${recipe.ingredients ? recipe.ingredients.length : '?'} ingredients</span>
+            <span>${recipe.ingredients ? recipe.ingredients.length : '?'} ${(typeof getUI === 'function') ? getUI('ingredientCount') : 'ingredients'}</span>
             <span class="w-0.5 h-0.5 rounded-full bg-warm-border"></span>
             <span>${recipe.difficulty || 'Easy'}</span>
             <span class="w-0.5 h-0.5 rounded-full bg-warm-border"></span>
-            <span>${formatViews(recipe.views)} views</span>
+            <span>${formatViews(recipe.views)} ${(typeof getUI === 'function') ? getUI('views') : 'views'}</span>
           </div>
-          <span class="text-primary text-[11px] font-semibold group-hover:underline">View →</span>
+          <span class="text-primary text-[11px] font-semibold group-hover:underline">${(typeof getUI === 'function') ? getUI('readRecipe') : 'View →'}</span>
         </div>
       </div>
     `;
@@ -526,7 +527,11 @@ function initFeaturedSlideshow() {
   const grid = document.getElementById('featured-grid');
   if (!grid || isCategoryPage) return;
 
-  const catLabels = { nonveg: 'Non-Veg', snacks: 'Snacks', sweets: 'Sweets', veg: 'Veg', drinks: 'Drinks', tips: 'Tips' };
+  function getFeaturedCatLabel(cat) {
+    if (typeof getUI === 'function') return getUI(cat);
+    var defaults = { nonveg: 'Non-Veg', snacks: 'Snacks', sweets: 'Sweets', veg: 'Veg', drinks: 'Drinks', tips: 'Tips' };
+    return defaults[cat] || cat;
+  }
 
   // Filter long videos only (duration > 3 minutes, not shorts)
   const longVideos = recipes.filter(r => {
@@ -557,12 +562,13 @@ function initFeaturedSlideshow() {
     card.className = 'featured-recipe magnetic-card relative rounded-2xl overflow-hidden group aspect-video cursor-pointer' +
       (idx === 2 ? ' col-span-2 lg:col-span-1' : '');
     card.dataset.id = recipe.id;
+    var featTitle = (typeof getRecipeField === 'function') ? getRecipeField(recipe, 'title', 'modal') : recipe.title;
     card.innerHTML =
-      '<img src="https://i.ytimg.com/vi/' + recipe.id + '/hqdefault.jpg" alt="' + recipe.title.replace(/"/g, '&quot;') + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">' +
+      '<img src="https://i.ytimg.com/vi/' + recipe.id + '/hqdefault.jpg" alt="' + featTitle.replace(/"/g, '&quot;') + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">' +
       '<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>' +
       '<div class="absolute bottom-3 left-3.5 right-3.5">' +
-        '<h3 class="text-white font-display font-bold text-sm sm:text-base drop-shadow-lg">' + recipe.title + '</h3>' +
-        '<p class="text-white/70 text-[11px] mt-0.5">' + (catLabels[recipe.category] || recipe.category) + ' · ' + recipe.duration + '</p>' +
+        '<h3 class="text-white font-display font-bold text-sm sm:text-base drop-shadow-lg">' + featTitle + '</h3>' +
+        '<p class="text-white/70 text-[11px] mt-0.5">' + getFeaturedCatLabel(recipe.category) + ' · ' + recipe.duration + '</p>' +
       '</div>';
     card.addEventListener('click', () => {
       if (typeof recipeSlugMap !== 'undefined' && recipeSlugMap[recipe.id]) {
@@ -629,6 +635,22 @@ function initFeaturedSlideshow() {
   // Initial render
   renderSlide(pickRandom3());
   resetTimer();
+
+  // Expose refresh for language switching (re-renders current cards with translated text)
+  window.refreshFeaturedSlideshow = function() {
+    var cards = grid.querySelectorAll('.featured-recipe');
+    if (cards.length === 0) return;
+    // Rebuild cards in place without animation
+    var currentIds = Array.from(cards).map(c => c.dataset.id);
+    var currentRecipes = currentIds.map(id => longVideos.find(r => r.id === id)).filter(Boolean);
+    if (currentRecipes.length > 0) {
+      grid.innerHTML = '';
+      currentRecipes.forEach(function(recipe, idx) {
+        grid.appendChild(buildCard(recipe, idx));
+      });
+      if (typeof window.applyMagneticToFeatured === 'function') window.applyMagneticToFeatured();
+    }
+  };
 }
 // ========== Cursor Trail (All Pages) ==========
 function initCursorTrail() {

@@ -73,6 +73,14 @@ const uiDefaults = {
   chutney: 'Chutney',
   searchPlaceholder: 'Search recipes...',
   subscribe: 'Subscribe',
+  quickLinks: 'Quick Links',
+  categories: 'Categories',
+  home: 'Home',
+  recipes: 'Recipes',
+  contact: 'Contact',
+  brandDesc: 'Where the love for food meets the warmth of home cooking. Sharing simple homemade recipes from our family kitchen.',
+  followUs: 'Follow us',
+  allRecipesSubtitle: 'Handpicked from our kitchen to yours',
 };
 
 // Get UI string for current language
@@ -142,6 +150,10 @@ function setLanguage(code) {
 
   // Apply homepage translation
   applyHomepageTranslation();
+
+  // Re-render recipe cards and featured slideshow with new language
+  if (typeof renderCards === 'function') renderCards();
+  if (typeof refreshFeaturedSlideshow === 'function') refreshFeaturedSlideshow();
 
   // If modal is open with a recipe, re-render it
   if (window._currentModalRecipe && !document.getElementById('recipe-modal').classList.contains('hidden')) {
@@ -306,7 +318,12 @@ function storeHpOriginal(id) {
   'hp-featured-heading', 'hp-whycook-heading',
   'hp-feat-recipes', 'hp-feat-recipes-desc', 'hp-feat-video', 'hp-feat-video-desc',
   'hp-feat-easy', 'hp-feat-easy-desc', 'hp-feat-all', 'hp-feat-all-desc',
-  'hp-all-recipes-heading'
+  'hp-all-recipes-heading',
+  'ft-brand-desc', 'ft-quick-links', 'ft-link-home', 'ft-link-recipes', 'ft-link-contact',
+  'ft-categories', 'ft-cat-nonveg', 'ft-cat-snacks', 'ft-cat-maincourse',
+  'ft-cat-sweets', 'ft-cat-breakfast', 'ft-cat-chutney',
+  'ft-our-channel', 'ft-subscribers', 'ft-videos', 'ft-views', 'ft-subscribe-text',
+  'hp-all-recipes-subtitle'
 ].forEach(storeHpOriginal);
 
 function applyHomepageTranslation() {
@@ -340,6 +357,7 @@ function applyHomepageTranslation() {
   t('hp-feat-all', 'allSkillLevels');
   t('hp-feat-all-desc', 'allSkillLevelsDesc');
   t('hp-all-recipes-heading', 'allRecipes');
+  t('hp-all-recipes-subtitle', 'allRecipesSubtitle');
 
   // Category names
   t('hp-cat-nonveg', 'nonveg');
@@ -381,6 +399,25 @@ function applyHomepageTranslation() {
     if (placeholder !== 'searchPlaceholder') searchInput.placeholder = placeholder;
     else searchInput.placeholder = 'Search recipes...';
   }
+
+  // Footer
+  t('ft-brand-desc', 'brandDesc');
+  t('ft-quick-links', 'quickLinks');
+  t('ft-link-home', 'home');
+  t('ft-link-recipes', 'recipes');
+  t('ft-link-contact', 'contact');
+  t('ft-categories', 'categories');
+  t('ft-cat-nonveg', 'nonveg');
+  t('ft-cat-snacks', 'snacks');
+  t('ft-cat-maincourse', 'maincourse');
+  t('ft-cat-sweets', 'sweets');
+  t('ft-cat-breakfast', 'breakfast');
+  t('ft-cat-chutney', 'chutney');
+  t('ft-our-channel', 'ourChannel');
+  t('ft-subscribers', 'subscribers');
+  t('ft-videos', 'videos');
+  t('ft-views', 'views');
+  t('ft-subscribe-text', 'subscribe');
 }
 
 // Initialize on load

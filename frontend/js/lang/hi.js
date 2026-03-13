@@ -47,6 +47,14 @@ const lang_hi = {
     videos: "वीडियो",
     veg: "वेज",
     subscribe: "सब्सक्राइब करें",
+    quickLinks: "त्वरित लिंक",
+    categories: "श्रेणियां",
+    home: "होम",
+    recipes: "रेसिपी",
+    contact: "संपर्क",
+    brandDesc: "जहां खाने का प्यार और घर की रसोई की गर्माहट मिलती है। हमारी पारिवारिक रसोई से सरल घरेलू रेसिपी।",
+    followUs: "हमें फॉलो करें",
+    allRecipesSubtitle: "हमारी रसोई से आपकी रसोई तक",
   },
   recipes: {
     "HfxVv2gk3tA": {
