@@ -123,10 +123,14 @@ function renderCategoryCounts() {
     veg: recipes.filter(r => r.category !== 'nonveg').length,
     sweets: recipes.filter(r => r.category === 'sweets').length,
     snacks: recipes.filter(r => r.category === 'snacks').length,
+    maincourse: recipes.filter(r => r.category === 'maincourse').length,
+    breakfast: recipes.filter(r => r.category === 'breakfast').length,
+    chutney: recipes.filter(r => r.category === 'chutney').length,
   };
+  const recipesLabel = (typeof getUI === 'function') ? getUI('recipes') : 'recipes';
   Object.entries(counts).forEach(([cat, count]) => {
     const el = document.getElementById('cat-count-' + cat);
-    if (el) el.textContent = count + ' recipes';
+    if (el) el.textContent = count + ' ' + recipesLabel;
   });
 }
 
